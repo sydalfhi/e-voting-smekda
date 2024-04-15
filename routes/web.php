@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Kandidat;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,9 +33,13 @@ Route::middleware('auth')->group(function () {
 
 
 // voting page
+//menagani halaman vote
 Route::get('/vote', function () {
-    return view('pages.frontend.vote.index');
+    $data = Kandidat::all();
+    return view('pages.frontend.vote.index', compact('data'));
 });
+//ketika user melakukan vote
+Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
 
 
 
@@ -50,4 +57,4 @@ Route::get('/vote', function () {
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
