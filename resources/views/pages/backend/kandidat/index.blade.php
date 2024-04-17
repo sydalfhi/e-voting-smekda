@@ -60,7 +60,7 @@
                                 </p>
                                 <p class="mt-3 text-xl font-bold">misi</p>
                                 <p>
-                                <ul class="pl-5 list-decimal">
+                                <ul class="pl-5 list-decimal min-h-[200px]">
                                     @foreach ($item->misi as $misiKandidat)
                                         @if ($misiKandidat == null)
                                         @else
@@ -69,6 +69,20 @@
                                     @endforeach
                                 </ul>
                                 </p>
+
+                                <div class="grid grid-cols-2 mt-3 gap-x-3">
+                                    <a href="{{ route('kandidat.edit', $item->kandidat->id) }}"
+                                        class="block py-2 font-bold text-center text-black bg-yellow-500 rounded">
+                                        Edit
+                                    </a>
+
+                                    <form class="block py-2 font-bold text-center text-white rounded bg-rose-500"
+                                        action="{{ route('kandidat.destroy', $item->kandidat->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     @empty

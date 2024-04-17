@@ -34,8 +34,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/kandidat', [KandidatController::class, 'index'])->name('kandidat.index');
     Route::get('/tambah-kandidat', [KandidatController::class, 'create'])->name('kandidat.create');
     Route::post('/tambah-kandidat', [KandidatController::class, 'store'])->name('kandidat.store');
-    Route::patch('/kandidat', [KandidatController::class, 'update'])->name('kandidat.update');
-    Route::delete('/kandidat', [KandidatController::class, 'destroy'])->name('kandidat.destroy');
+    Route::get('/edit-kandidat/{id}', [KandidatController::class, 'edit'])->name('kandidat.edit');
+    Route::put('/update-kandidat/{id}', [KandidatController::class, 'update'])->name('kandidat.update');
+    Route::delete('/hapus-kandidat/{id}', [KandidatController::class, 'destroy'])->name('kandidat.destroy');
 });
 
 

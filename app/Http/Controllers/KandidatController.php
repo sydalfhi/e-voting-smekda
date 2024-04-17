@@ -32,20 +32,12 @@ class KandidatController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
         $validatedDataKandidat = $request->validate([
             'nomer' => 'required',
             'calon_ketua' => 'required',
             'calon_wakil' => 'required',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
         ]);
-
-
-
-
-
         $validatedDataVisiMisi = $request->validate([
             'visi' => 'required',
             'misi_1' => 'required',
@@ -54,10 +46,8 @@ class KandidatController extends Controller
         $imageName = time() . '.' . $request->poster->extension();
         $request->poster->move(public_path('assets/kandidat'), $imageName);
 
-
-        Kandidat::create([...$validatedDataKandidat, "poster" => $imageName]);
-
-        Kandidat::where('nomer', $request->nomer)->first();
+        $kandidat = Kandidat::create([...$validatedDataKandidat, "poster" => $imageName]);
+        $idKandidatByNomer = Kandidat::where('nomer', $request->nomer)->first();
 
         $misiKandidat = [
             $request->misi_1,
@@ -73,7 +63,7 @@ class KandidatController extends Controller
         ];
         $visiMisi = VisiMisi::create([
             "visi" => $request->visi,
-            "idKandidat" => $request->nomer,
+            "idKandidat" => $idKandidatByNomer->id,
             "misi" => $misiKandidat,
         ]);
 
@@ -103,24 +93,68 @@ class KandidatController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kandidat $kandidat)
+    public function edit(Kandidat $kandidat, $id)
     {
-        //
+        $kandidat = Kandidat::find($id);
+        return view('pages.backend.kandidat.edit', compact('kandidat'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kandidat $kandidat)
+    public function update(Request $request, Kandidat $kandidat, $id)
     {
-        //
+        $validatedDataKandidat = $request->validate([
+            'nomer' => 'required',
+            'calon_ketua' => 'required',
+            'calon_wakil' => 'required',
+            'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
+        ]);
+        $validatedDataVisiMisi = $request->validate([
+            'visi' => 'required',
+            'misi_1' => 'required',
+        ]);
+
+        $imageName = time() . '.' . $request->poster->extension();
+        $request->poster->move(public_path('assets/kandidat'), $imageName);
+
+        $kandidatData = Kandidat::find($id);
+        $kandidatData->update([
+            "nomer" => $request->nomer,
+            "calon_ketua" => $request->calon_ketua,
+            "calon_wakil" => $request->calon_wakil,
+            "poster" => $imageName,
+        ]);
+
+
+        $visiMisiData = VisiMisi::where('idKandidat', $id)->first();
+        $misiKandidat = [
+            $request->misi_1,
+            $request->misi_2,
+            $request->misi_3,
+            $request->misi_4,
+            $request->misi_5,
+            $request->misi_6,
+            $request->misi_7,
+            $request->misi_8,
+            $request->misi_9,
+            $request->misi_10,
+        ];
+        $visiMisiData->update([
+            "visi" => $request->visi,
+            "misi" => $misiKandidat,
+        ]);
+
+        return redirect()->route('kandidat.index')->with('success_message', 'Data Berhasil Diubah.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kandidat $kandidat)
+    public function destroy(Kandidat $kandidat, $id)
     {
-        //
+        $kandidat = Kandidat::find($id);
+        $kandidat->delete();
+        return redirect()->route('kandidat.index')->with('success_message', 'Data Berhasil Dihapus.');
     }
 }
