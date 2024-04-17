@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kandidat;
+use App\Models\VisiMisi;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,9 @@ class KandidatController extends Controller
      */
     public function index()
     {
-        //
+        $data = VisiMisi::all();
+
+        return view('pages.backend.kandidat.index')->with('data', $data);
     }
 
     /**
@@ -21,7 +24,7 @@ class KandidatController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.backend.kandidat.create');
     }
 
     /**
@@ -29,7 +32,45 @@ class KandidatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+        $validatedDataKandidat = $request->validate([
+            'nomer' => 'required',
+            'calon_ketua' => 'required',
+            'calon_wakil' => 'required',
+            // "poster" => '1.jpg'
+        ]);
+        $validatedDataVisiMisi = $request->validate([
+            'visi' => 'required',
+            'misi_1' => 'required',
+        ]);
+
+
+        $kandidat = Kandidat::create([...$validatedDataKandidat, "poster" => '1.jpg']);
+
+        $data = Kandidat::where('nomer', $request->nomer)->first();
+
+        $misiKandidat = [
+            $request->misi_1,
+            $request->misi_2,
+            $request->misi_3,
+            $request->misi_4,
+            $request->misi_5,
+            $request->misi_6,
+            $request->misi_7,
+            $request->misi_8,
+            $request->misi_9,
+            $request->misi_10,
+        ];
+        $visiMisi = VisiMisi::create([
+            "visi" => $request->visi,
+            "idKandidat" => $request->nomer,
+            "misi" => $misiKandidat,
+        ]);
+
+
+        return redirect()->route('kandidat.index')->with('success_message', 'Data Berhasil Ditambahkan.');
     }
 
     public function vote(Request $request)

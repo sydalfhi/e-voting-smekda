@@ -3,8 +3,8 @@
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kandidat;
+use App\Models\VisiMisi;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('pages.backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -30,10 +30,17 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::middleware('auth')->group(function () {
+    Route::get('/kandidat', [KandidatController::class, 'index'])->name('kandidat.index');
+    Route::get('/tambah-kandidat', [KandidatController::class, 'create'])->name('kandidat.create');
+    Route::post('/tambah-kandidat', [KandidatController::class, 'store'])->name('kandidat.store');
+    Route::patch('/kandidat', [KandidatController::class, 'update'])->name('kandidat.update');
+    Route::delete('/kandidat', [KandidatController::class, 'destroy'])->name('kandidat.destroy');
+});
+
 
 
 // voting page
-//menagani halaman vote
 Route::get('/vote', function () {
     $data = Kandidat::all();
     return view('pages.frontend.vote.index', compact('data'));
@@ -44,16 +51,7 @@ Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote'
 
 
 
-// Route::group('auth)', function () {
-//     Route::get('/dashboard', function () {
-//         $data = Tanggapan::all();
-//         $pengaduan = ModelsPengaduan::all();
-//         $user = User::all();
-//         $pending = $pengaduan->where('status', 'pending');
 
-//         return view('dashboard', compact('data', 'user', 'pengaduan', 'pending'));
-//     })->middleware(['auth', 'verified'])->name('dashboard');
-// });
 
 
 

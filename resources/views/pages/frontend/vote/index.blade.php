@@ -76,14 +76,12 @@
                                             <div class="py-3">
                                                 <p class="font-semibold uppercase">Misi</p>
                                                 <ul class="pl-4 list-decimal">
-                                                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil,
-                                                        quam.</li>
-                                                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil,
-                                                        quam.</li>
-                                                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil,
-                                                        quam.</li>
-                                                    <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil,
-                                                        quam.</li>
+                                                    @foreach ($item->VisiMisi->misi as $misiKandidat)
+                                                        @if ($misiKandidat == null)
+                                                        @else
+                                                            <li>{{ $misiKandidat }}</li>
+                                                        @endif
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                             <input hidden type="number" name="kandidat" value="{{ $item->nomer }}"
