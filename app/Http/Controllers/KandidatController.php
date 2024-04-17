@@ -39,17 +39,25 @@ class KandidatController extends Controller
             'nomer' => 'required',
             'calon_ketua' => 'required',
             'calon_wakil' => 'required',
-            // "poster" => '1.jpg'
+            'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
         ]);
+
+
+
+
+
         $validatedDataVisiMisi = $request->validate([
             'visi' => 'required',
             'misi_1' => 'required',
         ]);
 
+        $imageName = time() . '.' . $request->poster->extension();
+        $request->poster->move(public_path('assets/kandidat'), $imageName);
 
-        $kandidat = Kandidat::create([...$validatedDataKandidat, "poster" => '1.jpg']);
 
-        $data = Kandidat::where('nomer', $request->nomer)->first();
+        Kandidat::create([...$validatedDataKandidat, "poster" => $imageName]);
+
+        Kandidat::where('nomer', $request->nomer)->first();
 
         $misiKandidat = [
             $request->misi_1,

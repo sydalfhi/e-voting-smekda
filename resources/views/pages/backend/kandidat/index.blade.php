@@ -42,9 +42,9 @@
                         <div class="w-full border-2 border-dashed border-[#252525] rounded max-h-[600px] p-2">
                             <div class="flex items-center justify-around">
 
-                                <div class="block w-[120px] bg-[#272727] aspect-square">
-                                    <img src="{{ asset('assets/' . $item->kandidat->poster) }}" alt="avatar">
-                                </div>
+
+                                <img src="{{ asset('assets/kandidat/' . $item->kandidat->poster) }}" alt="avatar"
+                                    class="object-cover block w-[120px] bg-[#272727] aspect-square">
                                 <div class="flex flex-col items-start justify-center">
                                     <h1 class="text-2xl font-bold">{{ $item->kandidat->nomer }}</h1>
                                     <h1 class="font-semi-bold text-[#272727] uppercase">{{ $item->kandidat->calon_ketua }}
