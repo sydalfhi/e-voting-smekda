@@ -6,6 +6,7 @@ use App\Models\Kandidat;
 use App\Models\VisiMisi;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class KandidatController extends Controller
 {
@@ -108,17 +109,39 @@ class KandidatController extends Controller
             'nomer' => 'required',
             'calon_ketua' => 'required',
             'calon_wakil' => 'required',
-            'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
+            'poster' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3000',
         ]);
         $validatedDataVisiMisi = $request->validate([
             'visi' => 'required',
             'misi_1' => 'required',
         ]);
 
-        $imageName = time() . '.' . $request->poster->extension();
-        $request->poster->move(public_path('assets/kandidat'), $imageName);
+
+
+
 
         $kandidatData = Kandidat::find($id);
+        $imageName = $kandidatData->poster; //request poster
+        $destination =  public_path('/assets/kandidat/' . $kandidatData->poster);
+
+
+
+
+        //jika request poster baru
+        if ($request->poster) {
+            //jika poster lama ada
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            //upload new poster
+            $imageName = time() . '.' . $request->poster->extension();
+            $request->poster->move(public_path('assets/kandidat'), $imageName);
+        } else {
+            $imageName = $kandidatData->poster;
+        }
+
+
+
         $kandidatData->update([
             "nomer" => $request->nomer,
             "calon_ketua" => $request->calon_ketua,
@@ -154,6 +177,11 @@ class KandidatController extends Controller
     public function destroy(Kandidat $kandidat, $id)
     {
         $kandidat = Kandidat::find($id);
+
+        $destination =  public_path('/assets/kandidat/' . $kandidat->poster);
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
         $kandidat->delete();
         return redirect()->route('kandidat.index')->with('success_message', 'Data Berhasil Dihapus.');
     }

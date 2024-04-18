@@ -54,8 +54,11 @@
 
                     <div class="mt-5">
                         <x-input-label for="poster" :value="__('Foto Kandidat')" />
+                        <img id="output" src="{{ asset('assets/kandidat/' . $kandidat->poster) }}" alt="avatar"
+                            class="w-[100px] hover:cursor-pointer">
                         <x-text-input value="{{ $kandidat->poster }}" id="poster" name="poster" type="file"
-                            class="block w-full p-2.5 mt-1 uppercase border" placeholder="katrina doe " />
+                            class="block w-full p-2.5 mt-1 uppercase border" placeholder="katrina doe "
+                            onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
                         <x-input-error class="mt-2" :messages="$errors->get('poster')" />
                     </div>
 
@@ -102,8 +105,9 @@
                             </li>
                             <li>
                                 <div class="mt-0">
-                                    <x-text-input value="{{ $kandidat->VisiMisi->misi[4] }}" id="misi_5" name="misi_5"
-                                        type="text" class="block w-full mt-1 uppercase" placeholder="misi-5" />
+                                    <x-text-input value="{{ $kandidat->VisiMisi->misi[4] }}" id="misi_5"
+                                        name="misi_5" type="text" class="block w-full mt-1 uppercase"
+                                        placeholder="misi-5" />
                                 </div>
                             </li>
                             <li>
@@ -157,6 +161,8 @@
             </div>
 
         </div>
+
+
 
 
     </section>
