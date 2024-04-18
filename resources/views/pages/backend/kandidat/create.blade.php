@@ -52,11 +52,12 @@
 
                     <div class="mt-5">
                         <x-input-label for="poster" :value="__('Foto Kandidat')" />
+                        <img id="output" class="w-[100px] hover:cursor-pointer">
                         <x-text-input id="poster" name="poster" type="file"
-                            class="block w-full p-2.5 mt-1 uppercase border" placeholder="katrina doe " />
+                            class="block w-full p-2.5 mt-1 uppercase border" placeholder="katrina doe "
+                            onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" />
                         <x-input-error class="mt-2" :messages="$errors->get('poster')" />
                     </div>
-
 
 
                     <h1 class="mt-10 text-xl font-semibold text-gray-800">Visi Misi Kandidat</h1>
