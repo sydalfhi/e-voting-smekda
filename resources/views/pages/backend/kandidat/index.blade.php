@@ -42,9 +42,9 @@
                         <div class="w-full border-2 border-dashed border-[#252525] rounded max-h-[600px] p-2">
                             <div class="flex items-center justify-around">
 
-                                <div class="block w-[120px] bg-[#272727] aspect-square">
-                                    <img src="{{ asset('assets/' . $item->kandidat->poster) }}" alt="avatar">
-                                </div>
+
+                                <img src="{{ asset('assets/kandidat/' . $item->kandidat->poster) }}" alt="avatar"
+                                    class="object-cover block w-[120px] bg-[#272727] aspect-square">
                                 <div class="flex flex-col items-start justify-center">
                                     <h1 class="text-2xl font-bold">{{ $item->kandidat->nomer }}</h1>
                                     <h1 class="font-semi-bold text-[#272727] uppercase">{{ $item->kandidat->calon_ketua }}
@@ -60,7 +60,7 @@
                                 </p>
                                 <p class="mt-3 text-xl font-bold">misi</p>
                                 <p>
-                                <ul class="pl-5 list-decimal">
+                                <ul class="pl-5 list-decimal min-h-[200px]">
                                     @foreach ($item->misi as $misiKandidat)
                                         @if ($misiKandidat == null)
                                         @else
@@ -69,6 +69,20 @@
                                     @endforeach
                                 </ul>
                                 </p>
+
+                                <div class="grid grid-cols-2 mt-3 gap-x-3">
+                                    <a href="{{ route('kandidat.edit', $item->kandidat->id) }}"
+                                        class="block py-2 font-bold text-center text-black bg-yellow-500 rounded">
+                                        Edit
+                                    </a>
+
+                                    <form class="block py-2 font-bold text-center text-white rounded bg-rose-500"
+                                        action="{{ route('kandidat.destroy', $item->kandidat->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     @empty

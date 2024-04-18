@@ -22,7 +22,8 @@
             @foreach ($data as $item)
                 <div @click="nomerKandidat = '{{ $item->nomer }}'; modalOpen = true"
                     class="cursor-pointer w-full min-w-[150px] max-w-[250px] overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                    <img class="object-cover w-full h-56" src="{{ asset('assets/' . $item->poster) }}" alt="avatar">
+                    <img class="object-cover w-full h-56" src="{{ asset('assets/kandidat/' . $item->poster) }}"
+                        alt="avatar">
 
                     <div class="py-5 text-center">
                         <a href="#" class="block text-xl font-bold text-gray-800 capitalize dark:text-white"
@@ -57,8 +58,8 @@
                                         <div>
                                             <h1 class="py-3 text-5xl font-bold text-center">{{ $item->nomer }}</h1>
                                             <div class="flex justify-start space-x-10">
-                                                <img src="{{ asset('assets/' . $item->poster) }}" class="max-w-[100px]"
-                                                    alt="avatar">
+                                                <img src="{{ asset('assets/kandidat/' . $item->poster) }}"
+                                                    class="max-w-[100px]" alt="avatar">
                                                 <div
                                                     class="flex flex-col items-start justify-center text-xl font-semibold capitalize">
                                                     <p>{{ $item->calon_ketua }}</p>

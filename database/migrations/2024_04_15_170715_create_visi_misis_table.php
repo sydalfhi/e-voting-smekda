@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('visi_misi', function (Blueprint $table) {
             $table->id();
             $table->string('visi');
-            $table->foreignId('idKandidat')->references('id')->on('kandidat');
+            $table->foreignId('idKandidat')->references('id')->on('kandidat')->onUpdate('cascade')->onDelete('cascade');
             $table->json('misi');
             $table->timestamps();
         });
