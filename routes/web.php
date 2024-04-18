@@ -42,12 +42,23 @@ Route::middleware('auth')->group(function () {
 
 
 // voting page
-Route::get('/vote', function () {
-    $data = Kandidat::all();
-    return view('pages.frontend.vote.index', compact('data'));
+
+Route::middleware('auth')->group(function () {
+    Route::get('/vote', function () {
+        $data = Kandidat::all();
+        return view('pages.frontend.vote.index', compact('data'));
+    });
+    Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
+
+    Route::get('/selesai', function () {
+        return view('pages.frontend.vote.selesai');
+    })->name('kandidat.vote.selesai');
 });
-//ketika user melakukan vote
-Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
+
+
+
+
+
 
 
 

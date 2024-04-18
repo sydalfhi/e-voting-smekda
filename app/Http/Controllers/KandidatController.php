@@ -78,7 +78,7 @@ class KandidatController extends Controller
         $data->update([
             "count" => $data->count + 1,
         ]);
-        return redirect()->route('welcome')->with('success_message', 'Terima Kasih Telah Memilih');
+        return redirect()->route('kandidat.vote.selesai');
     }
 
 
