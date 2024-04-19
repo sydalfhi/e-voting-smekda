@@ -3,34 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kandidat;
+use App\Models\User;
 use App\Models\VisiMisi;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class KandidatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $data = VisiMisi::all();
-
         return view('pages.backend.kandidat.index')->with('data', $data);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('pages.backend.kandidat.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         $validatedDataKandidat = $request->validate([
@@ -43,7 +35,6 @@ class KandidatController extends Controller
             'visi' => 'required',
             'misi_1' => 'required',
         ]);
-
         $imageName = time() . '.' . $request->poster->extension();
         $request->poster->move(public_path('assets/kandidat'), $imageName);
 
@@ -67,8 +58,6 @@ class KandidatController extends Controller
             "idKandidat" => $idKandidatByNomer->id,
             "misi" => $misiKandidat,
         ]);
-
-
         return redirect()->route('kandidat.index')->with('success_message', 'Data Berhasil Ditambahkan.');
     }
 
@@ -78,31 +67,22 @@ class KandidatController extends Controller
         $data->update([
             "count" => $data->count + 1,
         ]);
+        $pemilih = User::find(Auth::user()->id);
+        $pemilih->update([
+            "status" => "Y",
+        ]);
         return redirect()->route('kandidat.vote.selesai');
     }
 
-
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Kandidat $kandidat)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Kandidat $kandidat, $id)
     {
         $kandidat = Kandidat::find($id);
         return view('pages.backend.kandidat.edit', compact('kandidat'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Kandidat $kandidat, $id)
     {
         $validatedDataKandidat = $request->validate([
@@ -115,17 +95,9 @@ class KandidatController extends Controller
             'visi' => 'required',
             'misi_1' => 'required',
         ]);
-
-
-
-
-
         $kandidatData = Kandidat::find($id);
         $imageName = $kandidatData->poster; //request poster
         $destination =  public_path('/assets/kandidat/' . $kandidatData->poster);
-
-
-
 
         //jika request poster baru
         if ($request->poster) {
@@ -137,10 +109,9 @@ class KandidatController extends Controller
             $imageName = time() . '.' . $request->poster->extension();
             $request->poster->move(public_path('assets/kandidat'), $imageName);
         } else {
+            //jika poster baru tidak di upload
             $imageName = $kandidatData->poster;
         }
-
-
 
         $kandidatData->update([
             "nomer" => $request->nomer,
@@ -170,10 +141,6 @@ class KandidatController extends Controller
 
         return redirect()->route('kandidat.index')->with('success_message', 'Data Berhasil Diubah.');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Kandidat $kandidat, $id)
     {
         $kandidat = Kandidat::find($id);

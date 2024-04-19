@@ -4,13 +4,17 @@
 @section('root')
     <section class="grid items-center grid-cols-1 gap-5 p-10 mt-10 place-items-center">
 
-        <div class="flex items-center justify-center space-x-10">
-            <div class="h-20 bg-red-500 min-w-20"></div>
+        <div class="flex flex-col items-center justify-center space-y-5">
+            <div class="flex items-center justify-center space-x-5">
+                <img src="{{ asset('assets/osis.png') }}" class="w-28 " />
+                <img src="{{ asset('assets/kpo.png') }}" class="w-20" />
+                <img src="{{ asset('assets/smk.png') }}" class="w-20" />
+            </div>
             <div class="flex flex-col items-center justify-center space-y-3 text-center">
                 <h1 class="font-semibold md:text-3xl">TEMTUKAN PILIHAN ANDA</h1>
-                <p class="text-base">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores, delectus?</p>
+                <p class="text-base capitalize">Klik untuk melihat detail dari pasangan calon ketua osis</p>
             </div>
-            <div class="h-20 bg-blue-500 min-w-20"></div>
+
         </div>
 
 
