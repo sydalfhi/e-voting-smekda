@@ -5,9 +5,8 @@ namespace App\Imports;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class PemilihImportClass implements ToModel, WithHeadingRow
+class PemilihImportClass implements ToModel
 {
     /**
      * @param Collection $collection
