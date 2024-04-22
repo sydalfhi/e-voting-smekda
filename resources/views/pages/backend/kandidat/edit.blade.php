@@ -62,8 +62,6 @@
                         <x-input-error class="mt-2" :messages="$errors->get('poster')" />
                     </div>
 
-
-
                     <h1 class="mt-10 text-xl font-semibold text-gray-800">Visi Misi Kandidat</h1>
 
                     <div class="mt-5">
@@ -148,22 +146,12 @@
                             </li>
                         </ul>
                     </div>
-
-
                     <div>
-
                         <x-primary-button class="px-8 py-2 mt-5 mb-10 text-xl"
                             type="submit">{{ __('Simpan') }}</x-primary-button>
                     </div>
-
-
                 </form>
             </div>
-
         </div>
-
-
-
-
     </section>
 @endsection

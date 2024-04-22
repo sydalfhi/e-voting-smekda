@@ -101,8 +101,6 @@
                             tidak ada data kandidat</h1>
                     @endforelse
                 </div>
-
-
             </div>
         </div>
     </section>

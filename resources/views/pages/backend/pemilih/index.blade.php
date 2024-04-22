@@ -1,8 +1,4 @@
 @extends('template.main')
-
-
-
-
 @section('root')
     @if (session('success_message'))
         <div>
@@ -30,12 +26,8 @@
                     </label>
                 </div>
             </div>
-
             <div class="h-screen p-5 md:p-10 ">
                 <h1 class="text-3xl font-semibold">Pemilih</h1>
-
-
-
                 <div class="grid w-full grid-cols-1 py-5 bg-red md:gap-x-5">
                     <form action="{{ route('pemilih.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -46,13 +38,11 @@
                             <x-input-error class="mt-2" :messages="$errors->get('pemilih')" />
                         </div>
                         <div>
-
                             <x-primary-button class="px-8 py-2 mt-5 mb-10 text-xl"
                                 type="submit">{{ __('Simpan') }}</x-primary-button>
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </section>

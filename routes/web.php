@@ -46,9 +46,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-
-// voting page
-
 Route::middleware('auth')->group(function () {
     Route::get('/vote', function () {
         $data = Kandidat::all();
