@@ -50,15 +50,15 @@ Route::middleware('auth')->group(function () {
 // voting page
 
 Route::middleware('auth')->group(function () {
+    Route::get('/vote', function () {
+        $data = Kandidat::all();
+        return view('pages.frontend.vote.index', compact('data'));
+    });
+    Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
+    Route::get('/selesai', function () {
+        return view('pages.frontend.vote.selesai');
+    })->name('kandidat.vote.selesai');
 });
-Route::get('/vote', function () {
-    $data = Kandidat::all();
-    return view('pages.frontend.vote.index', compact('data'));
-});
-Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
-Route::get('/selesai', function () {
-    return view('pages.frontend.vote.selesai');
-})->name('kandidat.vote.selesai');
 
 
 

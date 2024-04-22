@@ -60,12 +60,16 @@
 
                 </div>
 
-                <div class="grid grid-cols-1 mt-14 md:grid-cols-12 gap-x-10">
-                    <div class="col-span-4">
-                        <canvas id="donat_paslon"></canvas>
-                    </div>
-                    <div class="col-span-8">
+
+                <h1 class="mt-14">
+                    <span class="text-3xl font-bold">Hasil Pemilihan</span>
+                </h1>
+                <div class="grid grid-cols-1 mt-2 md:grid-cols-12 gap-x-10">
+                    <div class="col-span-8 p-2 border rounded-md shadow">
                         <canvas id="bar-paslon"></canvas>
+                    </div>
+                    <div class="col-span-4 p-2 border rounded-md shadow">
+                        <canvas id="donat_paslon"></canvas>
                     </div>
                 </div>
 
@@ -78,7 +82,7 @@
 
     </section>
 
-    <section class="mt-20">
+    <section class="mt-40">
         @include('components.fragment.footer')
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -108,9 +112,9 @@
 
         let dougnut_Paslon = document.getElementById('donat_paslon').getContext('2d');
         const doughnut_paslon = {
-            label: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
+            labels: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
             datasets: [{
-                labels: 'Suara',
+                label: ['suara'],
                 data: [800, 600, 200],
                 backgroundColor: [
                     '#fd7014',
@@ -138,7 +142,7 @@
                 'Belum Memilih'
             ],
             datasets: [{
-                label: 'Data SUara Paslon',
+                label: 'Data Suara Paslon',
                 data: [404, 310, 90],
                 backgroundColor: [
                     '#fd7014',
