@@ -26,7 +26,8 @@
                     </label>
                 </div>
             </div>
-            <div class="h-screen p-5 md:p-10 ">
+
+            <div class="p-5 md:p-10">
                 <h1 class="text-3xl font-semibold">Pemilih</h1>
                 <div class="grid w-full grid-cols-1 py-5 bg-red md:gap-x-5">
                     <form action="{{ route('pemilih.store') }}" method="POST" enctype="multipart/form-data">
@@ -42,7 +43,21 @@
                                 type="submit">{{ __('Simpan') }}</x-primary-button>
                         </div>
                     </form>
+                    <form action="{{ route('pemilih.destroy') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <div>
+                            <x-primary-button class="px-8 py-2 mt-5 mb-10 text-xl"
+                                type="submit">{{ __('Clear') }}</x-primary-button>
+                        </div>
+                    </form>
                 </div>
+            </div>
+            <div class="flex flex-col">
+
+                @foreach ($data as $item)
+                    <h1> {{ $item->name }}</h1>
+                @endforeach
             </div>
         </div>
     </section>

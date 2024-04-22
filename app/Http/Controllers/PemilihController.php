@@ -11,7 +11,14 @@ class PemilihController extends Controller
 {
     public function index()
     {
-        return view('pages.backend.pemilih.index');
+        $data = User::get()->where('role', 'user');
+        return view('pages.backend.pemilih.index', compact('data'));
+    }
+
+    public function destroy()
+    {
+        User::where('role', 'user')->delete();
+        return redirect()->back()->with('success_message', 'Delete successfully!');
     }
 
     public function import(Request $request)
