@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="E Voting Osis SMK Negeri 2 Padang Panjang">
-    <meta name="keywords" content="E-voting, smekda , SMEKDA, SMKN 2 Padang Panjang , Osis Smekda">
+    <meta name="keywords"
+        content="E-voting, smekda , SMEKDA, SMKN 2 Padang Panjang , Osis Smekda , syaid alfarishi , habibie bayezid wildan">
     <meta name="author" content="Syaid Alfarishi , Habibie Bayezid Wildan">
-    <title>E Voting Osis SMEKDA </title>
+    <title>E Voting OSIS SMKN 2 PADANG PANJANG </title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +19,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="relative">
+<body class="relative text-[#222831]">
     @yield('root')
 </body>
 

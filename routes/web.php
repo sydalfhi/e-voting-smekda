@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KandidatController;
+use App\Http\Controllers\PemilihController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kandidat;
 use App\Models\VisiMisi;
@@ -39,9 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/hapus-kandidat/{id}', [KandidatController::class, 'destroy'])->name('kandidat.destroy');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::get('/pemilih', [PemilihController::class, 'index'])->name('pemilih.index');
+    Route::post('/pemilih', [PemilihController::class, 'import'])->name('pemilih.store');
+});
 
-
-// voting page
 
 Route::middleware('auth')->group(function () {
     Route::get('/vote', function () {
@@ -49,12 +52,10 @@ Route::middleware('auth')->group(function () {
         return view('pages.frontend.vote.index', compact('data'));
     });
     Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
-
     Route::get('/selesai', function () {
         return view('pages.frontend.vote.selesai');
     })->name('kandidat.vote.selesai');
 });
-
 
 
 

@@ -22,7 +22,7 @@ class AuthenticatedSessionController extends Controller
         // $request->authenticate();
         $request->validate([
             'name' => 'required|string',
-            'password' => 'required|string',
+            'password' => 'required',
         ]);
 
         $user = User::where('plain_password', $request->password)->first();
@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         if (!$user) {
             return backToLoginWithMessage('Nama Atau NIS Kamu Salah');
         } else {
-            if ($request->password != $user->plain_password || $request->name != $user->name) {
+            if ($request->password != $user->plain_password ||  strtolower($request->name) != strtolower($user->name)) {
                 return  backToLoginWithMessage('Nama Atau NIS Kamu Salah');
             }
             if ($user->role != 'admin') {

@@ -70,7 +70,6 @@
                         <x-input-error class="mt-2" :messages="$errors->get('visi')" />
                     </div>
 
-
                     <div class="mt-5">
                         <x-input-label for="calon_ketua" :value="__('Misi')" />
 

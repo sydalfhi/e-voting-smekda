@@ -24,37 +24,142 @@
 
 
             <div class="h-screen p-5 md:p-10 ">
-                <h1 class="text-3xl font-semibold">Halo Admin</h1>
+                <h1 class="text-3xl font-semibold">Dashboard</h1>
 
 
                 <div
-                    class="flex flex-col items-center justify-center mt-10 space-y-10 md:flex-row md:space-y-0 md:justify-between md:pr-10 xl:pr-16 ">
+                    class="flex flex-col items-center justify-center mt-10 space-y-10 md:flex-row md:space-y-0 md:justify-between md:pr-10 xl:pr-10 md:space-x-6">
 
-                    <div>
-                        <div class="loader">
-                            <div class="box1"></div>
-                            <div class="box2"></div>
-                            <div class="box3"></div>
-                        </div>
+
+                    <div class="w-full h-[230px] rounded-md bg-[#222831] relative overflow-hidden">
+                        <img src="{{ asset('assets/gambar1.svg') }}" alt="gambar"
+                            class="absolute h-full left-1 -bottom-10">
+                        <img src="{{ asset('assets/gambar3.svg') }}" alt="gambar"
+                            class="absolute h-full rotate-180 right-1 -top-10">
+                        <h1 class="absolute text-3xl font-bold text-white left-10 top-7 ">Hello Admin</h1>
+                        <h1 class="absolute text-xl text-white right-10 bottom-7 ">Welcome To Dashboard</h1>
                     </div>
-                    <div>
-                        <div class="loader">
-                            <div class="box1"></div>
-                            <div class="box2"></div>
-                            <div class="box3"></div>
+
+
+                    <div
+                        class="min-w-[480px] flex items-center justify-center mt-5 py-5 px-2 space-x-10 border rounded-md shadow ">
+                        <div>
+                            <div class="w-[190px] h-[190px]  grid place-items-center ">
+                                <canvas id="semuaDataPemilih"></canvas>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="loader">
-                            <div class="box1"></div>
-                            <div class="box2"></div>
-                            <div class="box3"></div>
+
+                        <div>
+                            <ul class="text-lg list-disc">
+                                <li>Data Pemilih : 800</li>
+                                <li>Sudah Memilih : 600</li>
+                                <li>Belum Memilih : 200</li>
+                            </ul>
                         </div>
                     </div>
 
                 </div>
+
+
+                <h1 class="mt-14">
+                    <span class="text-3xl font-bold">Hasil Pemilihan</span>
+                </h1>
+                <div class="grid grid-cols-1 mt-2 md:grid-cols-12 gap-x-10">
+                    <div class="col-span-8 p-2 border rounded-md shadow">
+                        <canvas id="bar-paslon"></canvas>
+                    </div>
+                    <div class="col-span-4 p-2 border rounded-md shadow">
+                        <canvas id="donat_paslon"></canvas>
+                    </div>
+                </div>
+
             </div>
         </div>
 
     </section>
+
+    <section class="mt-40">
+        @include('components.fragment.footer')
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let polarPemilih = document.getElementById('semuaDataPemilih').getContext('2d');
+        const data_pemmilih = {
+            labels: false,
+            datasets: [{
+                label: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
+                data: [800, 600, 200],
+                backgroundColor: [
+                    '#fd7014',
+                    'rgb(255, 99, 132)',
+                    '#252525',
+                ]
+            }]
+        };
+
+
+        let myChart = new Chart(polarPemilih, {
+            type: 'polarArea',
+            data: data_pemmilih,
+            options: {}
+        });
+
+
+
+        let dougnut_Paslon = document.getElementById('donat_paslon').getContext('2d');
+        const doughnut_paslon = {
+            labels: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
+            datasets: [{
+                label: ['suara'],
+                data: [800, 600, 200],
+                backgroundColor: [
+                    '#fd7014',
+                    'rgb(255, 99, 132)',
+                    '#252525',
+                ]
+            }]
+        };
+
+
+        let myChart_1 = new Chart(dougnut_Paslon, {
+            type: 'doughnut',
+            data: doughnut_paslon,
+        });
+
+
+
+
+
+        let bar_paslon = document.getElementById('bar-paslon').getContext('2d');
+        const bar_paslon_data = {
+            labels: [
+                'Paslon 01',
+                'Paslon 02',
+                'Belum Memilih'
+            ],
+            datasets: [{
+                label: 'Data Suara Paslon',
+                data: [404, 310, 90],
+                backgroundColor: [
+                    '#fd7014',
+                    'rgb(255, 99, 132)',
+                    '#252525',
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+
+        let myChart2 = new Chart(bar_paslon, {
+            type: 'bar',
+            data: bar_paslon_data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            },
+        });
+    </script>
 @endsection

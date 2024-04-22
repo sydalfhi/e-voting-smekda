@@ -32,35 +32,45 @@
             </div>
 
             <div class="h-screen p-5 md:p-10 ">
-                <h1 class="text-3xl font-semibold">Kandidat</h1>
+                <h1 class="text-3xl font-semibold">Pasangan Calon</h1>
+                <h2 class="font-semibold text-gray-500 text-md">Tambahkan Pasangan Calon ketua Osis</h2>
+
+                <p class="flex justify-end my-3">
+                    <a href="{{ route('kandidat.create') }}">
+                        <x-primary-button>
+                            {{ __('Tambah Data Paslon') }}
+                        </x-primary-button>
+                    </a>
+                </p>
+
 
 
                 <div class="grid w-full grid-cols-1 py-5 bg-red md:grid-cols-2 xl:grid-cols-3 md:gap-x-5">
 
 
                     @forelse ($data as $item)
-                        <div class="w-full border-2 border-dashed border-[#252525] rounded max-h-[600px] p-2">
-                            <div class="flex items-center justify-around">
+                        <div class="w-full border-2 border-dashed border-[#252525]/50 rounded min-h-[600px] p-3">
+                            <div class="flex flex-col items-center justify-around">
 
+                                <h1 class="text-3xl font-bold">{{ $item->kandidat->nomer }}</h1>
 
                                 <img src="{{ asset('assets/kandidat/' . $item->kandidat->poster) }}" alt="avatar"
-                                    class="object-cover block w-[120px] bg-[#272727] aspect-square">
-                                <div class="flex flex-col items-start justify-center">
-                                    <h1 class="text-2xl font-bold">{{ $item->kandidat->nomer }}</h1>
-                                    <h1 class="font-semi-bold text-[#272727] uppercase">{{ $item->kandidat->calon_ketua }}
+                                    class="rounded object-cover block w-[200px] bg-[#272727] aspect-square">
+                                <div class="flex flex-col items-center justify-center mt-2">
+                                    <h1 class="font-semibold text-[#272727] uppercase">{{ $item->kandidat->calon_ketua }}
                                     </h1>
-                                    <h1 class="font-semi-bold text-[#272727] uppercase">{{ $item->kandidat->calon_wakil }}
+                                    <p class="mx-auto font-bold text-center text-gray-500">&</p>
+                                    <h1 class="font-semibold text-[#272727] uppercase">{{ $item->kandidat->calon_wakil }}
                                     </h1>
                                 </div>
                             </div>
 
                             <div class="mt-2">
-                                <p class="text-xl font-bold">visi</p>
-                                <p class="text-base text-gray-700">{{ $item->visi }}
-                                </p>
-                                <p class="mt-3 text-xl font-bold">misi</p>
+                                <p class="text-xl font-bold uppercase">visi</p>
+                                <p class="text-[13px] text-slate-600">{{ $item->visi }}</p>
+                                <p class="mt-3 text-xl font-bold uppercase">misi</p>
                                 <p>
-                                <ul class="pl-5 list-decimal min-h-[200px]">
+                                <ul class="pl-5 list-decimal text-[13px] text-slate-600">
                                     @foreach ($item->misi as $misiKandidat)
                                         @if ($misiKandidat == null)
                                         @else
@@ -91,17 +101,6 @@
                             tidak ada data kandidat</h1>
                     @endforelse
                 </div>
-
-                <a href="{{ route('kandidat.create') }}">
-                    <div
-                        class="cursor-pointer grid place-items-center bg-gray-50 w-full h-[350px] rounded-lg  border-4 border-[#252525] border-dashed">
-                        <div
-                            class="grid place-items-center bg-gray-50 w-[150px] h-[150px] rounded-lg mt-10 border-4 border-[#252525] border-dashed">
-                            <h1 class="text-6xl font-bold">+</h1>
-                        </div>
-
-                    </div>
-                </a>
             </div>
         </div>
     </section>
