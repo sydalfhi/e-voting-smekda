@@ -7,17 +7,19 @@
             @csrf
             <div class="  w-[500px]  mx-auto  mt-10 p-5 border border-gray-300 rounded-md min-h-[500px]">
                 <div class="w-full h-[325px] bg-gray-400 rounded">
-
+                    <img src="{{ asset('assets/thanks.jpg') }}" alt="thanks" class="object-cover w-full h-full rounded-md">
                 </div>
-                <h1 class="mt-5 text-2xl font-bold text-center capitalize">Terima Kasih Telah Memilih</h1>
-                <p class="mt-5 text-justify capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Officiis, cum? acide mamae ota ssd</p>
+                <h1 class="mt-5 text-2xl font-bold text-center capitalize">Terima Kasih Telah MemilihI</h1>
+                <p class="mt-3 text-justify capitalize">Gunakan hak pilih Anda dengan bijak! Pilihlah calon ketua OSIS yang
+                    memiliki visi, misi, dan program kerja yang jelas untuk membawa SMKN 2 Padang Panjang menuju masa depan
+                    yang gemilang.</p>
 
 
                 <button
-                    class="block px-10 py-2 mx-auto mt-5 text-lg font-bold text-center text-white bg-blue-500 rounded">Klik
+                    class="block px-10 py-2 mx-auto mt-5 text-lg font-bold text-center text-white bg-blue-500 rounded rounded-lg">Klik
                     Jika
-                    Selesai</=>
+                    Selesai
+                </button>
             </div>
         </form>
 

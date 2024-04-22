@@ -3,9 +3,9 @@
 
 
     <div class="flex items-center justify-center space-x-5">
-        <img class="w-9" src="{{ asset('assets/kpo.png') }}" alt="kpo_logo">
-        <img class="w-14" src="{{ asset('assets/osis.png') }}" alt="osis_logo">
-        <img class="w-10" src="{{ asset('assets/smk.png') }}" alt="smk_logo">
+        <img class="w-11" src="{{ asset('assets/osis.png') }}" alt="osis_logo">
+        <img class=" w-9" src="{{ asset('assets/kpo.png') }}" alt="kpo_logo">
+        <img class="w-11" src="{{ asset('assets/smk.png') }}" alt="smk_logo">
     </div>
 
 
@@ -44,7 +44,7 @@
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
 
-                <span class="mx-4 font-medium">Kandidat</span>
+                <span class="mx-4 font-medium">Paslon</span>
             </a>
 
             <a class="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
@@ -64,11 +64,5 @@
 
         </nav>
 
-        <a href="#" class="flex items-center px-4 -mx-2">
-            <img class="object-cover mx-2 rounded-full h-9 w-9"
-                src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-                alt="avatar" />
-            <span class="mx-2 font-medium text-gray-800 dark:text-gray-200 capitalize">admin</span>
-        </a>
     </div>
 </aside>

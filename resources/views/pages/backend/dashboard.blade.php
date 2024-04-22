@@ -24,19 +24,25 @@
 
 
             <div class="h-screen p-5 md:p-10 ">
-                <h1 class="text-3xl font-semibold">Halo Admin</h1>
+                <h1 class="text-3xl font-semibold">Dashboard</h1>
 
 
                 <div
                     class="flex flex-col items-center justify-center mt-10 space-y-10 md:flex-row md:space-y-0 md:justify-between md:pr-10 xl:pr-10 md:space-x-6">
 
 
-                    <div class="w-full h-[220px] rounded-md bg-blue-500">
-
+                    <div class="w-full h-[230px] rounded-md bg-[#222831] relative overflow-hidden">
+                        <img src="{{ asset('assets/gambar1.svg') }}" alt="gambar"
+                            class="absolute h-full left-1 -bottom-10">
+                        <img src="{{ asset('assets/gambar3.svg') }}" alt="gambar"
+                            class="absolute h-full rotate-180 right-1 -top-10">
+                        <h1 class="absolute text-3xl font-bold text-white left-10 top-7 ">Hello Admin</h1>
+                        <h1 class="absolute text-xl text-white right-10 bottom-7 ">Welcome To Dashboard</h1>
                     </div>
 
 
-                    <div class="min-w-[450px] flex items-center justify-center p-5 space-x-10 border rounded-md shadow ">
+                    <div
+                        class="min-w-[480px] flex items-center justify-center mt-5 py-5 px-2 space-x-10 border rounded-md shadow ">
                         <div>
                             <div class="w-[190px] h-[190px]  grid place-items-center ">
                                 <canvas id="semuaDataPemilih"></canvas>
@@ -44,7 +50,7 @@
                         </div>
 
                         <div>
-                            <ul class="list-disc">
+                            <ul class="text-lg list-disc">
                                 <li>Data Pemilih : 800</li>
                                 <li>Sudah Memilih : 600</li>
                                 <li>Belum Memilih : 200</li>
@@ -54,7 +60,7 @@
 
                 </div>
 
-                <div class="grid grid-cols-12 mt-10 gap-x-10">
+                <div class="grid grid-cols-1 mt-14 md:grid-cols-12 gap-x-10">
                     <div class="col-span-4">
                         <canvas id="donat_paslon"></canvas>
                     </div>
@@ -84,9 +90,9 @@
                 label: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
                 data: [800, 600, 200],
                 backgroundColor: [
+                    '#fd7014',
                     'rgb(255, 99, 132)',
-                    'rgb(75, 192, 192)',
-                    'rgb(255, 205, 86)',
+                    '#252525',
                 ]
             }]
         };
@@ -107,9 +113,9 @@
                 labels: 'Suara',
                 data: [800, 600, 200],
                 backgroundColor: [
+                    '#fd7014',
                     'rgb(255, 99, 132)',
-                    'rgb(75, 192, 192)',
-                    'rgb(255, 205, 86)',
+                    '#252525',
                 ]
             }]
         };
@@ -135,9 +141,9 @@
                 label: 'Data SUara Paslon',
                 data: [404, 310, 90],
                 backgroundColor: [
+                    '#fd7014',
                     'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
+                    '#252525',
                 ],
                 hoverOffset: 4
             }]

@@ -85,6 +85,7 @@ class KandidatController extends Controller
     }
     public function update(Request $request, Kandidat $kandidat, $id)
     {
+
         $validatedDataKandidat = $request->validate([
             'nomer' => 'required',
             'calon_ketua' => 'required',
