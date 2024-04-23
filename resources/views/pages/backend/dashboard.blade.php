@@ -90,7 +90,7 @@
         const data_pemmilih = {
             labels: false,
             datasets: [{
-                label: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
+                label: ['suara'],
                 data: [count['user'], count['statusTrue'], count['statusFalse']],
                 backgroundColor: [
                     '#fd7014',
