@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/pemilih', [PemilihController::class, 'index'])->name('pemilih.index');
     Route::post('/pemilih', [PemilihController::class, 'import'])->name('pemilih.store');
+    Route::delete('/pemilih', [PemilihController::class, 'destroy'])->name('pemilih.destroy');
 });
 
 
