@@ -51,9 +51,9 @@
 
                         <div>
                             <ul class="text-lg list-disc">
-                                <li>Data Pemilih : 800</li>
-                                <li>Sudah Memilih : 600</li>
-                                <li>Belum Memilih : 200</li>
+                                <li>Data Pemilih : {{ $count['user'] }}</li>
+                                <li>Sudah Memilih : {{ $count['statusTrue'] }}</li>
+                                <li>Belum Memilih : {{ $count['statusFalse'] }}</li>
                             </ul>
                         </div>
                     </div>
@@ -83,12 +83,15 @@
     </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        let count = @json($count);
+        let kandidat = count['kandidat'].map(item => item.calon_ketua);
+        let count_pemilihan = count['kandidat'].map(item => item.count);
         let polarPemilih = document.getElementById('semuaDataPemilih').getContext('2d');
         const data_pemmilih = {
             labels: false,
             datasets: [{
-                label: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
-                data: [800, 600, 200],
+                label: ['suara'],
+                data: [count['user'], count['statusTrue'], count['statusFalse']],
                 backgroundColor: [
                     '#fd7014',
                     'rgb(255, 99, 132)',
@@ -108,10 +111,10 @@
 
         let dougnut_Paslon = document.getElementById('donat_paslon').getContext('2d');
         const doughnut_paslon = {
-            labels: ['Data Pemilih', 'Sudah Memilih', 'Belum Memilih'],
+            labels: [...kandidat, 'BELUM MEMILIH'],
             datasets: [{
                 label: ['suara'],
-                data: [800, 600, 200],
+                data: [...count_pemilihan, count['statusFalse']],
                 backgroundColor: [
                     '#fd7014',
                     'rgb(255, 99, 132)',
@@ -129,17 +132,12 @@
 
 
 
-
         let bar_paslon = document.getElementById('bar-paslon').getContext('2d');
         const bar_paslon_data = {
-            labels: [
-                'Paslon 01',
-                'Paslon 02',
-                'Belum Memilih'
-            ],
+            labels: [...kandidat, 'BELUM MEMILIH'],
             datasets: [{
                 label: 'Data Suara Paslon',
-                data: [404, 310, 90],
+                data: [...count_pemilihan, count['statusFalse']],
                 backgroundColor: [
                     '#fd7014',
                     'rgb(255, 99, 132)',

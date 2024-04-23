@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\PemilihController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kandidat;
+use App\Models\User;
 use App\Models\VisiMisi;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +24,14 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('pages.backend.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+/* Route::get('/dashboard', function () {
+    $count = [
+        'user' => User::get()->where('role', 'user')->count(),
+        'statusTrue' => User::get()->where('role', 'user')->where('status', 'Y')->count(),
+        'statusFalse' => User::get()->where('role', 'user')->where('status', 'N')->count(),
+    ];
+    return view('pages.backend.dashboard', compact('count'));
+})->middleware(['auth', 'verified'])->name('dashboard'); */
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::get('/kandidat', [KandidatController::class, 'index'])->name('kandidat.index');
     Route::get('/tambah-kandidat', [KandidatController::class, 'create'])->name('kandidat.create');
     Route::post('/tambah-kandidat', [KandidatController::class, 'store'])->name('kandidat.store');
@@ -43,6 +52,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/pemilih', [PemilihController::class, 'index'])->name('pemilih.index');
     Route::post('/pemilih', [PemilihController::class, 'import'])->name('pemilih.store');
+    Route::delete('/pemilih', [PemilihController::class, 'destroy'])->name('pemilih.destroy');
 });
 
 

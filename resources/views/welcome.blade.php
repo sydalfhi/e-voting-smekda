@@ -73,19 +73,22 @@
 
             <div class="grid items-center grid-cols-1 gap-4 mt-10 md:items-start md:grid-cols-3 justify-items-stretch">
                 <div class="flex flex-col items-center justify-center space-y-3">
-                    <div class="w-[100px] h-[100px] bg-[#fd7014] rounded-sm">
+                    <div class="w-[100px] h-[100px] bg-[#fd7014] rounded-sm grid place-items-center">
+                        <img src="{{ asset('assets/online.svg') }}" alt="online" class="w-10">
                     </div>
                     <p class="text-base font-bold lg:text-xl">Pemungutan suara secara elektronik</p>
                     <p>Siswa dapat memilih ketua OSIS mereka secara online dengan mudah dan aman.</p>
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-3">
-                    <div class="w-[100px] h-[100px] bg-[#fd7014] rounded-sm">
+                    <div class="w-[100px] h-[100px] bg-[#fd7014] rounded-sm grid place-items-center">
+                        <img src="{{ asset('assets/time.svg') }}" alt="time" class="w-10">
                     </div>
                     <p class="text-base font-bold lg:text-xl">Hasil Pimilihan yang real-time</p>
                     <p>Hasil pemilihan dapat dilihat secara real-time, sehingga prosesnya transparan dan akuntabel</p>
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-3">
-                    <div class="w-[100px] h-[100px] bg-[#fd7014] rounded-sm">
+                    <div class="w-[100px] h-[100px] bg-[#fd7014] rounded-sm grid place-items-center">
+                        <img src="{{ asset('assets/up.svg') }}" alt="up" class="w-10">
                     </div>
                     <p class="text-base font-bold lg:text-xl">Meningkatkan partisipasi pemilih</p>
                     <p>Aplikasi ini diharapkan dapat meningkatkan partisipasi siswa dalam pemilihan ketua OSIS.</p>
