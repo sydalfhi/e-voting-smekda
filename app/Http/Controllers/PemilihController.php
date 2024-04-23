@@ -11,8 +11,7 @@ class PemilihController extends Controller
 {
     public function index()
     {
-        $data = User::get()->where('role', 'user');
-        return view('pages.backend.pemilih.index', compact('data'));
+        return view('pages.backend.pemilih.index');
     }
 
     public function destroy()

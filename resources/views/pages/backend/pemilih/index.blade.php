@@ -29,8 +29,9 @@
 
             <div class="p-5 md:p-10">
                 <h1 class="text-3xl font-semibold">Pemilih</h1>
-                <div class="grid w-full grid-cols-1 py-5 bg-red md:gap-x-5">
-                    <form action="{{ route('pemilih.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="grid items-center w-full grid-cols-5 py-5 justify-items-start md:gap-x-10">
+                    <form action="{{ route('pemilih.store') }}" method="POST" enctype="multipart/form-data"
+                        class="w-full col-span-4">
                         @csrf
                         <div class="mt-5">
                             <x-input-label for="pemilih" :value="__('File Pemilih')" />
@@ -40,25 +41,93 @@
                         </div>
                         <div>
                             <x-primary-button class="px-8 py-2 mt-5 mb-10 text-xl"
-                                type="submit">{{ __('Simpan') }}</x-primary-button>
+                                type="submit">{{ __('Simpan Data ') }}</x-primary-button>
                         </div>
                     </form>
-                    <form action="{{ route('pemilih.destroy') }}" method="POST">
+                    <form action="{{ route('pemilih.destroy') }}" method="POST" class="col-span-1">
                         @csrf
                         @method('DELETE')
                         <div>
-                            <x-primary-button class="px-8 py-2 mt-5 mb-10 text-xl"
-                                type="submit">{{ __('Clear') }}</x-primary-button>
+                            <x-primary-button class="px-8 py-2 mt-5 mb-10 text-xl -translate-y-5 bg-red-500"
+                                type="submit">{{ __('Hapus Semua Data Pemilih') }}</x-primary-button>
                         </div>
                     </form>
+
                 </div>
             </div>
-            <div class="flex flex-col">
 
-                @foreach ($data as $item)
-                    <h1> {{ $item->name }}</h1>
-                @endforeach
+
+            <div class="p-5 md:px-10">
+                <h1 class="text-3xl font-semibold">Tutorial</h1>
+
+                <ul class="pl-5 mt-5 list-decimal">
+                    <li>
+                        <div>
+                            <span class="capitalize">Buat Data Pada Microsoft Exel sesuai dengan format yang benar</span>
+                            <div class="relative flex items-center justify-start mt-2 space-x-10">
+                                <img src="{{ asset('assets/step/step_1_false.png') }}" alt="step1"
+                                    class="border-4 border-[#272727] relative z-10">
+                                <img src="{{ asset('assets/step/step_1_true.png') }}" alt="step2"
+                                    class="border-4 border-[#272727] relative z-10">
+
+                                <img src="{{ asset('assets/benar.svg') }}" alt="step2"
+                                    class="absolute z-20 w-7 left-64 top-14">
+
+                                <img src="{{ asset('assets/salah.svg') }}" alt="step2"
+                                    class="absolute z-20 w-9 left-20 top-14">
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="mt-10">
+                        <div>
+                            <span class="capitalize">Pada Bagian Kiri Bawah Exel , pastikan anda menghapus Sheet2 & Sheet3,
+                                Klik Kanan Pada Sheet2 & Sheet3 untuk menampilan menu Delete</span>
+                            <div class="relative flex items-center justify-start mt-2 space-x-10">
+                                <img src="{{ asset('assets/step/step_2_false.png') }}" alt="step1"
+                                    class="border-4 border-[#272727] relative z-10">
+                                <img src="{{ asset('assets/step/step_2_true.png') }}" alt="step2"
+                                    class="border-4 border-[#272727] relative z-10">
+
+                                <img src="{{ asset('assets/benar.svg') }}" alt="step2"
+                                    class="absolute z-20 w-7 left-[22rem] top-10">
+
+                                <img src="{{ asset('assets/salah.svg') }}" alt="step2"
+                                    class="absolute z-20 w-9 left-[11rem] top-10">
+
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="mt-10">
+                        <div>
+                            <span class="capitalize">Jika Sudah Selesai Anda Dapat Melakukan Save , pastikan format file
+                                <span class="font-bold text-green-500 lowercase">.xlsx</span></span>
+                            <div class="relative flex items-center justify-start mt-2 space-x-10">
+                                <img src="{{ asset('assets/step/step_3_true.png') }}" alt="step2"
+                                    class="border-4 border-[#272727] relative z-10">
+                                <img src="{{ asset('assets/benar.svg') }}" alt="ste32"
+                                    class="absolute z-20 w-7 left-44 top-14">
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="mt-10">
+                        <span class="capitalize">Kemudian click Tombol <span
+                                class="px-5 py-2 text-white bg-red-500 rounded">hapus semua data pemilih</span> Di atas
+                            untuk
+                            Melakukan Penghapusan data
+                            Pemilih sebelumnya</span>
+                    </li>
+
+                    <li class="mt-10">
+                        <span>KeMudian Anda Dapat Melakukan Upload Data Pemilih Yang baru</span>
+                    </li>
+                </ul>
             </div>
+
         </div>
     </section>
 @endsection
