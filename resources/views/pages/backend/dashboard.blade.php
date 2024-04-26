@@ -53,9 +53,11 @@
                             <ul class="text-lg list-disc text-[16px]">
                                 <li>Data Pemilih : {{ $count['user'] }} orang</li>
                                 <li>Sudah Memilih : {{ $count['statusTrue'] }} orang ,
-                                    ({{ floor(($count['statusTrue'] / $count['user']) * 100) }}%)</li>
+                                    ({{ $count['statusTrue'] ? floor(($count['statusTrue'] / $count['user']) * 100) : 0 }}%)
+                                </li>
                                 <li>Belum Memilih : {{ $count['statusFalse'] }} orang ,
-                                    ({{ floor(($count['statusFalse'] / $count['user']) * 100) }}%)</li>
+                                    ({{ $count['statusFalse'] ? floor(($count['statusFalse'] / $count['user']) * 100) : 0 }}%)
+                                </li>
                                 </li>
                             </ul>
                         </div>
