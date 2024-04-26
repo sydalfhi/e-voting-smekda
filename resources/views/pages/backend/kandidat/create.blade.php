@@ -33,20 +33,20 @@
                     <div class="mt-5">
                         <x-input-label for="nomer" :value="__('Nomer Urut')" />
                         <x-text-input id="nomer" name="nomer" type="text" class="block w-full mt-1"
-                            placeholder="01" />
+                            :value="old('nomer')" placeholder="01" />
                         <x-input-error class="mt-2" :messages="$errors->get('nomer')" />
                     </div>
 
                     <div class="mt-5">
                         <x-input-label for="calon_ketua" :value="__('Nama Calon Ketua')" />
                         <x-text-input id="calon_ketua" name="calon_ketua" type="text" class="block w-full mt-1 uppercase"
-                            placeholder="john doe" />
+                            :value="old('calon_ketua')" placeholder="john doe" />
                         <x-input-error class="mt-2" :messages="$errors->get('calon_ketua')" />
                     </div>
                     <div class="mt-5">
                         <x-input-label for="calon_wakil" :value="__('Nama Calon Wakil')" />
                         <x-text-input id="calon_wakil" name="calon_wakil" type="text" class="block w-full mt-1 uppercase"
-                            placeholder="katrina doe " />
+                            :value="old('calon_wakil')" placeholder="katrina doe " />
                         <x-input-error class="mt-2" :messages="$errors->get('calon_wakil')" />
                     </div>
 
@@ -66,7 +66,7 @@
                         <x-input-label for="visi" :value="__('Visi')" />
                         <textarea name="visi" id="visi"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                            rows="2"></textarea>
+                            rows="2">{{ old('visi') }}</textarea>
                         <x-input-error class="mt-2" :messages="$errors->get('visi')" />
                     </div>
 
@@ -77,62 +77,62 @@
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_1" name="misi_1" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-1" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-1" :value="old('misi_1')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_2" name="misi_2" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-2" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-2" :value="old('misi_2')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_3" name="misi_3" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-3" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-3" :value="old('misi_3')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_4" name="misi_4" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-4" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-4" :value="old('misi_4')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_5" name="misi_5" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-5" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-5" :value="old('misi_5')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_6" name="misi_6" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-6" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-6" :value="old('misi_6')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_7" name="misi_7" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-7" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-7" :value="old('misi_7')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_8" name="misi_8" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-8" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-8" :value="old('misi_8')" />
                                 </div>
                             </li>
 
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_9" name="misi_9" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-9" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-9" :value="old('misi_9')" />
                                 </div>
                             </li>
                             <li>
                                 <div class="mt-0">
                                     <x-text-input id="misi_10" name="misi_10" type="text"
-                                        class="block w-full mt-1 uppercase" placeholder="misi-10" />
+                                        class="block w-full mt-1 uppercase" placeholder="misi-10" :value="old('misi_10')" />
                                 </div>
                             </li>
                         </ul>
