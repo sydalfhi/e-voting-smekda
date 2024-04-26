@@ -14,7 +14,7 @@
         </div>
 
         <div x-data="{ modalOpen: false, nomerKandidat: null }"
-            class="relative grid w-full grid-cols-2 px-10 mx-auto mt-10 gap-x-4 gap-y-8 place-items-center xl:px-32">
+            class="relative grid w-full grid-cols-1 px-10 mx-auto mt-10 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 place-items-center xl:px-32">
             @foreach ($data as $item)
                 <div class="cursor-pointer w-full min-w-[150px] max-w-[250px] md:max-w-[290px] overflow-hidden bg-white rounded-lg shadow-lg "
                     @click="nomerKandidat = '{{ $item->nomer }}'; modalOpen = true">
@@ -99,7 +99,7 @@
                                 <button type="submit" class="block col-span-5">
                                     <div class="grid py-3 font-semibold text-white bg-blue-600 rounded-md cursor-pointer active:bg-blue-800 place-items-center"
                                         @click="modalOpen = false">
-                                        Pilih Paslon {{ $item->nomer }}
+                                        Pilih Paslon
                                     </div>
                                 </button>
                             </div>

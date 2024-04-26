@@ -31,7 +31,7 @@
                     class="flex flex-col items-center justify-center mt-10 space-y-10 md:flex-row md:space-y-0 md:justify-between md:pr-10 xl:pr-10 md:space-x-6">
 
 
-                    <div class="w-full h-[230px] rounded-md bg-[#222831] relative overflow-hidden">
+                    <div class="w-full md:min-w-[500px] h-[230px] rounded-md bg-[#222831] relative overflow-hidden">
                         <img src="{{ asset('assets/gambar1.svg') }}" alt="gambar"
                             class="absolute h-full left-1 -bottom-10">
                         <img src="{{ asset('assets/gambar3.svg') }}" alt="gambar"
@@ -42,18 +42,21 @@
 
 
                     <div
-                        class="min-w-[480px] flex items-center justify-center mt-5 py-5 px-2 space-x-10 border rounded-md shadow ">
+                        class="min-w-[500px] flex items-center justify-center mt-5 py-5 px-2 space-x-5 border rounded-md shadow ">
                         <div>
-                            <div class="w-[190px] h-[190px]  grid place-items-center ">
+                            <div class="w-[175px] h-[175px]  grid place-items-center ">
                                 <canvas id="semuaDataPemilih"></canvas>
                             </div>
                         </div>
 
                         <div>
-                            <ul class="text-lg list-disc">
-                                <li>Data Pemilih : {{ $count['user'] }}</li>
-                                <li>Sudah Memilih : {{ $count['statusTrue'] }}</li>
-                                <li>Belum Memilih : {{ $count['statusFalse'] }}</li>
+                            <ul class="text-lg list-disc text-[16px]">
+                                <li>Data Pemilih : {{ $count['user'] }} orang</li>
+                                <li>Sudah Memilih : {{ $count['statusTrue'] }} orang ,
+                                    ({{ floor(($count['statusTrue'] / $count['user']) * 100) }}%)</li>
+                                <li>Belum Memilih : {{ $count['statusFalse'] }} orang ,
+                                    ({{ floor(($count['statusFalse'] / $count['user']) * 100) }}%)</li>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -65,7 +68,7 @@
                     <span class="text-3xl font-bold">Hasil Pemilihan</span>
                 </h1>
                 <div class="grid grid-cols-1 mt-2 md:grid-cols-12 gap-x-10">
-                    <div class="col-span-8 p-2 border rounded-md shadow">
+                    <div class="col-span-8 p-2 font-semibold border rounded-md shadow ">
                         <canvas id="bar-paslon"></canvas>
                     </div>
                     <div class="col-span-4 p-2 border rounded-md shadow">
@@ -78,13 +81,10 @@
 
     </section>
 
-    <section class="mt-40">
-        @include('components.fragment.footer')
-    </section>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         let count = @json($count);
-        let kandidat = count['kandidat'].map(item => item.calon_ketua);
+        let kandidat = count['kandidat'].map(item => item.nomer);
         let count_pemilihan = count['kandidat'].map(item => item.count);
         let polarPemilih = document.getElementById('semuaDataPemilih').getContext('2d');
         const data_pemmilih = {
@@ -96,6 +96,8 @@
                     '#fd7014',
                     'rgb(255, 99, 132)',
                     '#252525',
+                    '#44624a',
+                    '#87ceeb',
                 ]
             }]
         };
@@ -119,6 +121,8 @@
                     '#fd7014',
                     'rgb(255, 99, 132)',
                     '#252525',
+                    '#44624a',
+                    '#87ceeb',
                 ]
             }]
         };
@@ -142,6 +146,8 @@
                     '#fd7014',
                     'rgb(255, 99, 132)',
                     '#252525',
+                    '#44624a',
+                    '#87ceeb',
                 ],
                 hoverOffset: 4
             }]
@@ -160,4 +166,8 @@
             },
         });
     </script>
+
+    <section class="hidden mt-40 md:block">
+        @include('components.fragment.footer')
+    </section>
 @endsection

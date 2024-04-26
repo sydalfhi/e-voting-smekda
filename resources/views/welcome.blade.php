@@ -10,7 +10,7 @@
     @endif
 
 
-    <section class="relative px-2 bg-white py-14 md:px-0">
+    <section class="relative px-2 bg-white pt-7 pb-14 md:px-0">
         <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
             <div class="flex flex-wrap items-center space-x-5 md:flex-nowrap sm:-mx-3">
                 <div class="w-full md:w-1/2 md:px-3">
@@ -26,7 +26,8 @@
                             Ayo! berpartisipasi melakukan voting untuk menentukan SMKN 2 Padang Panjang Kedepannya karena
                             pilihan anda menentukan masa depan smk
                         </p>
-                        <div class="relative flex flex-col sm:flex-row sm:space-x-4">
+                        <div
+                            class="relative flex flex-col items-center justify-center xl:justify-start sm:flex-row sm:space-x-4">
                             <a href="/login"
                                 class="flex items-center w-full px-20 py-3 mb-3 text-lg text-white bg-[#fd7014] rounded-md sm:mb-0 hover:bg-[#fd7014] sm:w-auto"
                                 data-primary="indigo-600" data-rounded="rounded-md">

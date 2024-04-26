@@ -23,7 +23,7 @@
         <div class="mt-4">
             <x-input-label for="password" class="font-semibold" :value="__('Nis Anda')" />
 
-            <x-text-input id="password" class="block w-full mt-1" type="text" name="password" required
+            <x-text-input id="password" class="block w-full mt-1" type="number" name="password" required
                 autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />

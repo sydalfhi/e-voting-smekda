@@ -23,12 +23,12 @@
             </div>
 
             <div class="h-screen p-5 md:p-10 ">
-                <h1 class="text-3xl font-semibold">Tambah Kandidat Baru</h1>
+                <h1 class="text-3xl font-semibold">Tambah Paslon Baru</h1>
 
 
                 <form action="{{ route('kandidat.store') }}" enctype="multipart/form-data" method="POST">
                     @csrf
-                    <h1 class="mt-10 text-xl font-semibold text-gray-800">Data Kandidat</h1>
+                    <h1 class="mt-10 text-xl font-semibold text-gray-800">Data Paslon</h1>
 
                     <div class="mt-5">
                         <x-input-label for="nomer" :value="__('Nomer Urut')" />
@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="mt-5">
-                        <x-input-label for="poster" :value="__('Foto Kandidat')" />
+                        <x-input-label for="poster" :value="__('Foto Paslon')" />
                         <img id="output" class="w-[100px] hover:cursor-pointer">
                         <x-text-input id="poster" name="poster" type="file"
                             class="block w-full p-2.5 mt-1 uppercase border" placeholder="katrina doe "
@@ -60,7 +60,7 @@
                     </div>
 
 
-                    <h1 class="mt-10 text-xl font-semibold text-gray-800">Visi Misi Kandidat</h1>
+                    <h1 class="mt-10 text-xl font-semibold text-gray-800">Visi Misi Paslon</h1>
 
                     <div class="mt-5">
                         <x-input-label for="visi" :value="__('Visi')" />

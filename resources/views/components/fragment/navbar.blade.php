@@ -1,9 +1,11 @@
-<nav x-data="{ isOpen: false }" class="relative bg-white shadow dark:bg-gray-800">
+<nav x-data="{ isOpen: false }" class="relative px-5 bg-white shadow dark:bg-gray-800 xl:px-20 xl:py-5">
     <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div class="flex items-center justify-between">
-            <a href="#">
-                <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
-            </a>
+            <div class="flex items-center justify-center space-x-4">
+                <img class="w-8" src="{{ asset('/assets/osis.png') }}" alt="gambar">
+                <img class="w-7 " src="{{ asset('/assets/kpo.png') }}" alt="gambar">
+                <img class="w-7 " src="{{ asset('/assets/smk.png') }}" alt="gambar">
+            </div>
 
             <!-- Mobile menu button -->
             <div class="flex md:hidden">
