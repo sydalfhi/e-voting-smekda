@@ -5,8 +5,6 @@ use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\PemilihController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Kandidat;
-use App\Models\User;
-use App\Models\VisiMisi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,13 +45,15 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth', 'isUser'])->group(function () {
-    Route::get('/vote', function () {
-        $data = Kandidat::all();
-        return view('pages.frontend.vote.index', compact('data'));
-    });
+Route::middleware('auth')->group(function () {
+    Route::middleware('isUser')->group(function () {
+        Route::get('/vote', function () {
+            $data = Kandidat::all();
+            return view('pages.frontend.vote.index', compact('data'));
+        });
 
-    Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
+        Route::post('/vote',  [KandidatController::class, 'vote'])->name('kandidat.vote');
+    });
     Route::get('/selesai', function () {
         return view('pages.frontend.vote.selesai');
     })->name('kandidat.vote.selesai');
