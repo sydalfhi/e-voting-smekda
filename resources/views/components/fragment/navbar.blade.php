@@ -31,6 +31,7 @@
             <div class="flex flex-col md:flex-row md:mx-6">
                 <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
                     href="/">Home</a>
+
                 @if (Auth::check())
                     @if (Auth::user()->role != 'admin')
                         <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
@@ -45,9 +46,9 @@
                     </form>
                 @else
                     <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-                        href="/login">Login</a>
+                        href="/vote">Vote</a>
                     <a class="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-                        href="/register">Register</a>
+                        href="/login">Login</a>
                 @endif
             </div>
         </div>
