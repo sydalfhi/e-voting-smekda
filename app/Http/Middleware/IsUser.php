@@ -19,6 +19,9 @@ class IsUser
         if (Auth::user()->role != 'user') {
             return redirect('/dashboard');
         }
+        if (Auth::user()->status == 'Y') {
+            return redirect('/selesai');
+        }
         return $next($request);
     }
 }
