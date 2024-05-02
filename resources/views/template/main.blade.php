@@ -19,9 +19,12 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- <link rel="stylesheet" href=""> --}}
-    {{-- <script src=""></script> --}}
-
+    <script>
+        window.onload = () => {
+            let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+            bannerNode.parentNode.removeChild(bannerNode);
+        }
+    </script>
 </head>
 
 <body class="relative text-[#222831]">
