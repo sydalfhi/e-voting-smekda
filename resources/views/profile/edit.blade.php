@@ -1,3 +1,9 @@
+<script>
+    window.onload = () => {
+        let bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+        bannerNode.parentNode.removeChild(bannerNode);
+    }
+</script>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
