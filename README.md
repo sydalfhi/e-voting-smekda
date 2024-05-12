@@ -20,3 +20,4 @@
 8. npm run build / yarn build / pnpm build
 9. php artisan serve
 ```
+PHP 8.1.10
