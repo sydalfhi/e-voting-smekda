@@ -3,9 +3,9 @@
     <section class="grid items-center grid-cols-1 gap-5 p-10 mt-10 md:p-5 lg:-10 place-items-center">
         <div class="flex flex-col items-center justify-center space-y-5">
             <div class="flex items-center justify-center space-x-5">
-                <img src="{{ asset('assets/osis.png') }}" class="w-24 " />
-                <img src="{{ asset('assets/kpo.png') }}" class="w-20 " />
                 <img src="{{ asset('assets/smk.png') }}" class="w-20" />
+                <img src="{{ asset('assets/kpo.png') }}" class="w-20 " />
+                <img src="{{ asset('assets/osis.png') }}" class="w-24 " />
             </div>
             <div class="flex flex-col items-center justify-center space-y-3 text-center">
                 <h1 class="font-bold md:text-4xl">TENTUKAN PILIHAN ANDA</h1>

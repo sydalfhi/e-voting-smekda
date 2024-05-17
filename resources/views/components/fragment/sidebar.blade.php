@@ -3,9 +3,9 @@
 
 
     <div class="flex items-center justify-center space-x-5">
-        <img class="w-11" src="{{ asset('assets/osis.png') }}" alt="osis_logo">
-        <img class=" w-9" src="{{ asset('assets/kpo.png') }}" alt="kpo_logo">
         <img class="w-11" src="{{ asset('assets/smk.png') }}" alt="smk_logo">
+        <img class=" w-9" src="{{ asset('assets/kpo.png') }}" alt="kpo_logo">
+        <img class="w-11" src="{{ asset('assets/osis.png') }}" alt="osis_logo">
     </div>
 
 

@@ -2,9 +2,9 @@
     <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-center space-x-4">
-                <img class="w-8" src="{{ asset('/assets/osis.png') }}" alt="gambar">
-                <img class="w-7 " src="{{ asset('/assets/kpo.png') }}" alt="gambar">
                 <img class="w-7 " src="{{ asset('/assets/smk.png') }}" alt="gambar">
+                <img class="w-7 " src="{{ asset('/assets/kpo.png') }}" alt="gambar">
+                <img class="w-8" src="{{ asset('/assets/osis.png') }}" alt="gambar">
             </div>
 
             <!-- Mobile menu button -->
