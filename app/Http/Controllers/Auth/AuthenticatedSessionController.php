@@ -30,9 +30,6 @@ class AuthenticatedSessionController extends Controller
         if (!$user) {
             return backToLoginWithMessage('Nama Atau NIS Kamu Salah');
         } else {
-            if ($request->password != $user->plain_password ||  strtolower($request->name) != strtolower($user->name)) {
-                return  backToLoginWithMessage('Nama Atau NIS Kamu Salah');
-            }
             if ($user->role != 'admin') {
                 if ($user->status == 'Y') {
                     return backToLoginWithMessage('Kamu Telah Melakukan Voting Sebelumnya ( Hubungi Panitia Jika Terjadi Kesalahan )');
